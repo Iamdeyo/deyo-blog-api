@@ -1,20 +1,13 @@
 'use strict';
 import express from 'express';
 import { database } from '../libs/Prisma.js';
+import { login, me, register } from '../controllers/auth.js';
+import { tokenAuth } from '../middleware/auth.js';
 const router = express.Router()
 
 
-router.post('/', async (req, res)=>{
-    try {
-
-        const user = await database.user.create({data:{username: 'deyo', password: 'nosecret'}})
-        console.log(user)
-        res.send('user')
-        
-    } catch (error) {
-        console.log(error)
-        res.send('errer')
-    }
-})
+router.post('/register', register)
+router.post('/login', login)
+router.get('/me', tokenAuth, me)
 
 export default router
