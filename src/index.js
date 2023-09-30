@@ -17,9 +17,9 @@ dotenv.config();
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
 
+app.use("/", express.static("public"));
 app.use("/api/auth", authRouter);
 app.use("/api/post", postRouter);
-app.get("/", (req, res) => res.send("Hello World!"));
 
 /**
  * Error handlers
