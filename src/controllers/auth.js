@@ -33,13 +33,13 @@ const login = asyncWrapper(async (req, res) => {
   });
 
   if (!user) {
-    return response(res, StatusCodes.NOT_FOUND, "User not found");
+    return response(res, StatusCodes.BAD_REQUEST, "Invalid User or Password");
   }
 
   const passwordIsMatch = await bcrypt.compare(password, user.password);
 
   if (!passwordIsMatch) {
-    return response(res, StatusCodes.BAD_REQUEST, "Invalid password");
+    return response(res, StatusCodes.BAD_REQUEST, "Invalid User or Password");
   }
   //jwt
   const token = signJwt(user, "7d");
