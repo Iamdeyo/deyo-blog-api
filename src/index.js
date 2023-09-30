@@ -19,7 +19,7 @@ app.use(fileUpload({ useTempFiles: true }));
 
 app.use("/api/auth", authRouter);
 app.use("/api/post", postRouter);
-app.get("/", (req, res) => res.send("Hello World!"));
+app.get('/', express.static('public'))
 
 /**
  * Error handlers
