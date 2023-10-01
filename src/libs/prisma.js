@@ -1,6 +1,6 @@
 "use strict";
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../../prisma/generated/client/index.js";
 
 const database = new PrismaClient();
 
